@@ -20,7 +20,7 @@ export class ClienteListComponent {
     private clienteService: ClienteService,
     private service: SmartTableService
   ) { 
-
+    // Jeferson Oliveira
     // const data = this.service.getData();
     // this.source.load(data);
   }
