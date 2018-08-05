@@ -4,6 +4,7 @@ import { ClienteService } from '../../../providers/cliente.service';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableService } from '../../../@core/data/smart-table.service';
 import swal from 'sweetalert';
+import { ClienteViewComponent } from '../cliente-view/cliente-view.component';
 
 
 
@@ -36,16 +37,26 @@ export class ClienteListComponent {
   }
 
   settings = {
+    button: {
+      title: 'Button',
+      type: 'custom',
+      renderComponent: ClienteViewComponent,
+      onComponentInitFunction(instance) {
+        instance.save.subscribe(row => {
+          alert(`${row.name} saved!`)
+        });
+      }
+    },
     actions: {  
       columnTitle: 'Action',  
-      add: false,  
+      add: true,  
       edit: false,  
       delete: false,  
-      position: 'left'  
+      position: 'right'  
     },
     attr: {  
       class: 'table table-striped table-bordered table-hover'  
-    },  
+    },
     defaultStyle: false,
     pager: {  
       display: true,  
